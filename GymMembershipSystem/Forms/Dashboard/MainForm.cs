@@ -2,6 +2,8 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using GymMembershipSystem.Common;
+using GymMembershipSystem.Forms.Plans;
+using GymMembershipSystem.Forms.Trainers;
 
 namespace GymMembershipSystem.Forms.Dashboard
 {
@@ -9,6 +11,8 @@ namespace GymMembershipSystem.Forms.Dashboard
     {
         private readonly NavigationService _navigationService;
         private DashboardViewControl? _dashboardView;
+        private PlansViewControl? _plansView;
+        private TrainersViewControl? _trainersView;
         private Button? _currentActiveButton;
 
         // Visual theme tokens
@@ -101,13 +105,17 @@ namespace GymMembershipSystem.Forms.Dashboard
         private void btnNavPlans_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnNavPlans);
-            ShowPlaceholderView("Membership Plans", "Define and configure gym pricing tiers and durations (Component 04).");
+            _plansView ??= new PlansViewControl();
+            _navigationService.NavigateTo(_plansView);
+            lblStatusReady.Text = "Membership Plans active";
         }
 
         private void btnNavTrainers_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnNavTrainers);
-            ShowPlaceholderView("Trainers Catalog", "Manage certified personal trainers and instructor assignments (Component 05).");
+            _trainersView ??= new TrainersViewControl();
+            _navigationService.NavigateTo(_trainersView);
+            lblStatusReady.Text = "Trainers Catalog active";
         }
 
         private void btnNavClasses_Click(object sender, EventArgs e)
