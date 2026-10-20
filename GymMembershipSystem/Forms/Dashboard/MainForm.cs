@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using GymMembershipSystem.Common;
+using GymMembershipSystem.Forms.Members;
 using GymMembershipSystem.Forms.Plans;
 using GymMembershipSystem.Forms.Trainers;
 
@@ -11,6 +12,7 @@ namespace GymMembershipSystem.Forms.Dashboard
     {
         private readonly NavigationService _navigationService;
         private DashboardViewControl? _dashboardView;
+        private MembersViewControl? _membersView;
         private PlansViewControl? _plansView;
         private TrainersViewControl? _trainersView;
         private Button? _currentActiveButton;
@@ -99,7 +101,9 @@ namespace GymMembershipSystem.Forms.Dashboard
         private void btnNavMembers_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnNavMembers);
-            ShowPlaceholderView("Members Directory", "Manage member profiles, subscriptions, and memberships (Component 06 & 07).");
+            _membersView ??= new MembersViewControl();
+            _navigationService.NavigateTo(_membersView);
+            lblStatusReady.Text = "Members Directory active";
         }
 
         private void btnNavPlans_Click(object sender, EventArgs e)
