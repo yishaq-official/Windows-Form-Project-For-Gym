@@ -19,6 +19,8 @@ namespace GymMembershipSystem.Common
         public static event Action<Attendance>? AttendanceRecorded;
         public static event Action<Payment>? PaymentReceived;
         public static event Action<User, ChangeType>? UserChanged;
+        public static event Action<User>? UserLoggedIn;
+        public static event Action<User?>? UserLoggedOut;
         public static event Action? DataReset;
 
         #region Publishing Methods
@@ -93,6 +95,22 @@ namespace GymMembershipSystem.Common
         public static void PublishUserChanged(User user, ChangeType changeType)
         {
             SafeInvoke(UserChanged, user, changeType);
+        }
+
+        /// <summary>
+        /// Publishes a user authenticated / logged in event.
+        /// </summary>
+        public static void PublishUserLoggedIn(User user)
+        {
+            SafeInvoke(UserLoggedIn, user);
+        }
+
+        /// <summary>
+        /// Publishes a user signed out event.
+        /// </summary>
+        public static void PublishUserLoggedOut(User? user)
+        {
+            SafeInvoke(UserLoggedOut, user);
         }
 
         /// <summary>
