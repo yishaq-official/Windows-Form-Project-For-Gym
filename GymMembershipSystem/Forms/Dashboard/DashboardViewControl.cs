@@ -54,7 +54,7 @@ namespace GymMembershipSystem.Forms.Dashboard
             });
         }
 
-        private void OnAttendanceRecorded(Attendance attendance)
+        private void OnAttendanceRecorded(GymMembershipSystem.Models.Attendance attendance)
         {
             RunOnUiThread(() =>
             {

@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using GymMembershipSystem.Common;
+using GymMembershipSystem.Forms.Attendance;
 using GymMembershipSystem.Forms.Classes;
 using GymMembershipSystem.Forms.Members;
 using GymMembershipSystem.Forms.Plans;
@@ -17,6 +18,7 @@ namespace GymMembershipSystem.Forms.Dashboard
         private PlansViewControl? _plansView;
         private TrainersViewControl? _trainersView;
         private ClassesViewControl? _classesView;
+        private AttendanceViewControl? _attendanceView;
         private Button? _currentActiveButton;
 
         // Visual theme tokens
@@ -135,7 +137,9 @@ namespace GymMembershipSystem.Forms.Dashboard
         private void btnNavAttendance_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnNavAttendance);
-            ShowPlaceholderView("Daily Attendance Terminal", "Record real-time member check-ins and check-outs (Component 09).");
+            _attendanceView ??= new AttendanceViewControl();
+            _navigationService.NavigateTo(_attendanceView);
+            lblStatusReady.Text = "Daily Attendance Terminal active";
         }
 
         private void btnNavPayments_Click(object sender, EventArgs e)
