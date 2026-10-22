@@ -264,6 +264,15 @@ namespace GymMembershipSystem.Services
                         $"Member '{member.FullName}' does not have an active membership subscription (Business Rule 1). Please assign or renew their plan before booking classes.");
                 }
 
+                // Enforce Business Rule 4:
+                // "A member cannot book the same class twice."
+                bool alreadyBooked = _dataStore.Bookings.Any(b => b.ClassId == classId && b.MemberId == memberId && !b.IsCancelled);
+                if (alreadyBooked)
+                {
+                    return Result<Booking>.Fail(
+                        $"Member '{member.FullName}' is already booked into '{gymClass.Name}' (Business Rule 4).");
+                }
+
                 // Enforce Business Rule 3:
                 // "A class booking is accepted only if the number of active bookings is below the class capacity.
                 // When capacity is reached, new bookings are rejected with a 'Class is full' message."
@@ -272,15 +281,6 @@ namespace GymMembershipSystem.Services
                 {
                     return Result<Booking>.Fail(
                         $"Class is full. '{gymClass.Name}' has reached its maximum capacity of {gymClass.Capacity} participants (Business Rule 3).");
-                }
-
-                // Enforce Business Rule 4:
-                // "A member cannot book the same class twice."
-                bool alreadyBooked = _dataStore.Bookings.Any(b => b.ClassId == classId && b.MemberId == memberId && !b.IsCancelled);
-                if (alreadyBooked)
-                {
-                    return Result<Booking>.Fail(
-                        $"Member '{member.FullName}' is already booked into '{gymClass.Name}' (Business Rule 4).");
                 }
 
                 var booking = new Booking
