@@ -6,20 +6,20 @@ This document outlines the complete component breakdown for **Phase 1 (Windows F
 
 ## Component Index
 
-| # | Component Folder | Requirements Covered | Description |
-|---|------------------|----------------------|-------------|
-| **01** | [`docs/01_core_architecture/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/01_core_architecture/) | Foundation / Section 3 & 6 | In-memory database, domain entities, base interfaces, event dispatcher, seed data generator. |
-| **02** | [`docs/02_authentication/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/02_authentication/) | D1, D12, D13 | Admin login screen, credential verification, session context, error provider handling. |
-| **03** | [`docs/03_main_shell/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/03_main_shell/) | D2, D13 | Main application shell, sidebar navigation, dynamic view docking, status bar. |
-| **04** | [`docs/04_membership_plans/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/04_membership_plans/) | D4, D12, D13 | Plan catalog CRUD (duration in months/days, pricing, validation). |
-| **05** | [`docs/05_trainers/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/05_trainers/) | D7, D12, D13 | Trainer management CRUD, specialty tracking, contact info validation. |
-| **06** | [`docs/06_members/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/06_members/) | D3, D6, D12, D13, Rule 8 | Member registration, profile edits, deactivation (soft-delete), search/filter ListView. |
-| **07** | [`docs/07_subscriptions/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/07_subscriptions/) | D5, Rules 1, 2, 7, 8 | Plan assignment, auto expiry calculation, status calculation, trainer assignment. |
-| **08** | [`docs/08_classes_and_bookings/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/08_classes_and_bookings/) | D8, D9, Rules 3, 4, 5, 6 | Class schedules, capacity control, member booking, booking cancellation. |
-| **09** | [`docs/09_attendance/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/09_attendance/) | D10, Rules 1, 10 | Daily check-in/check-out terminal, active membership verification, today's log. |
-| **10** | [`docs/10_payments/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/10_payments/) | D11, Rules 9, 10 | Payment entry, method selection, subscription fee tracking, outstanding balance calculation. |
-| **11** | [`docs/11_reports/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/11_reports/) | D14, Section 7 | Real-time KPI summary tiles, active vs expired breakdown, monthly income, attendance metrics. |
-| **12** | [`docs/12_user_management/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/12_user_management/) | D15, D12, D13 | Admin system user management, role assignments, account deactivation. |
+| # | Component Folder | Requirements Covered | Description | Status |
+|---|------------------|----------------------|-------------|:------:|
+| **01** | [`docs/01_core_architecture/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/01_core_architecture/) | Foundation / Section 3 & 6 | In-memory database, domain entities, base interfaces, event dispatcher, seed data generator. | ✅ Complete |
+| **02** | [`docs/02_authentication/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/02_authentication/) | D1, D12, D13 | Admin login screen, credential verification, session context, error provider handling. | ✅ Complete |
+| **03** | [`docs/03_main_shell/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/03_main_shell/) | D2, D13 | Main application shell, sidebar navigation, dynamic view docking, status bar. | ✅ Complete |
+| **04** | [`docs/04_membership_plans/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/04_membership_plans/) | D4, D12, D13 | Plan catalog CRUD (duration in months/days, pricing, validation). | ✅ Complete |
+| **05** | [`docs/05_trainers/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/05_trainers/) | D7, D12, D13 | Trainer management CRUD, specialty tracking, contact info validation. | ✅ Complete |
+| **06** | [`docs/06_members/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/06_members/) | D3, D6, D12, D13, Rule 8 | Member registration, profile edits, deactivation (soft-delete), search/filter ListView. | ✅ Complete |
+| **07** | [`docs/07_subscriptions/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/07_subscriptions/) | D5, Rules 1, 2, 7, 8 | Plan assignment, auto expiry calculation, status calculation, trainer assignment. | ✅ Complete |
+| **08** | [`docs/08_classes_and_bookings/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/08_classes_and_bookings/) | D8, D9, Rules 3, 4, 5, 6 | Class schedules, capacity control, member booking, booking cancellation. ([Report](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/08_classes_and_bookings/implementation_report.md)) | ✅ Complete |
+| **09** | [`docs/09_attendance/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/09_attendance/) | D10, Rules 1, 10 | Daily check-in/check-out terminal, active membership verification, today's log. ([Report](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/09_attendance/implementation_report.md)) | ✅ Complete |
+| **10** | [`docs/10_payments/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/10_payments/) | D11, Rules 9, 10 | Payment entry, method selection, subscription fee tracking, outstanding balance calculation. ([Report](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/10_payments/implementation_report.md)) | ✅ Complete |
+| **11** | [`docs/11_reports/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/11_reports/) | D14, Section 7 | Real-time KPI summary tiles, active vs expired breakdown, monthly income, attendance metrics. ([Report](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/11_reports/implementation_report.md)) | ✅ Complete |
+| **12** | [`docs/12_user_management/`](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/12_user_management/) | D15, D12, D13 | Admin system user management, role assignments, account deactivation. ([Report](file:///c:/Users/User/source/repos/GymMembershipSystem/docs/12_user_management/implementation_report.md)) | ✅ Complete |
 
 ---
 

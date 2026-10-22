@@ -5,8 +5,11 @@ using GymMembershipSystem.Common;
 using GymMembershipSystem.Forms.Attendance;
 using GymMembershipSystem.Forms.Classes;
 using GymMembershipSystem.Forms.Members;
+using GymMembershipSystem.Forms.Payments;
 using GymMembershipSystem.Forms.Plans;
+using GymMembershipSystem.Forms.Reports;
 using GymMembershipSystem.Forms.Trainers;
+using GymMembershipSystem.Forms.Users;
 
 namespace GymMembershipSystem.Forms.Dashboard
 {
@@ -19,6 +22,9 @@ namespace GymMembershipSystem.Forms.Dashboard
         private TrainersViewControl? _trainersView;
         private ClassesViewControl? _classesView;
         private AttendanceViewControl? _attendanceView;
+        private PaymentsViewControl? _paymentsView;
+        private ReportsViewControl? _reportsView;
+        private UsersViewControl? _usersView;
         private Button? _currentActiveButton;
 
         // Visual theme tokens
@@ -145,19 +151,25 @@ namespace GymMembershipSystem.Forms.Dashboard
         private void btnNavPayments_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnNavPayments);
-            ShowPlaceholderView("Payments & Billing", "Process subscription fees and review member account balances (Component 10).");
+            _paymentsView ??= new PaymentsViewControl();
+            _navigationService.NavigateTo(_paymentsView);
+            lblStatusReady.Text = "Payments & Financial Ledger active";
         }
 
         private void btnNavReports_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnNavReports);
-            ShowPlaceholderView("Reports & Analytics", "Financial summaries, membership metrics, and attendance analysis (Component 11).");
+            _reportsView ??= new ReportsViewControl();
+            _navigationService.NavigateTo(_reportsView);
+            lblStatusReady.Text = "Reports & Business Analytics active";
         }
 
         private void btnNavUsers_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnNavUsers);
-            ShowPlaceholderView("User Management", "Administrator account credentials and role assignments (Component 12).");
+            _usersView ??= new UsersViewControl();
+            _navigationService.NavigateTo(_usersView);
+            lblStatusReady.Text = "System User Management active";
         }
 
         private void ShowPlaceholderView(string title, string description)
