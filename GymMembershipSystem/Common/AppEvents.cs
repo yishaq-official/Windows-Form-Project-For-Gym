@@ -16,7 +16,6 @@ namespace GymMembershipSystem.Common
         public static event Action<Subscription, ChangeType>? SubscriptionChanged;
         public static event Action<GymClass, ChangeType>? GymClassChanged;
         public static event Action<Booking, ChangeType>? BookingChanged;
-        public static event Action<Attendance>? AttendanceRecorded;
         public static event Action<Payment>? PaymentReceived;
         public static event Action<User, ChangeType>? UserChanged;
         public static event Action<User>? UserLoggedIn;
@@ -73,13 +72,6 @@ namespace GymMembershipSystem.Common
             SafeInvoke(BookingChanged, booking, changeType);
         }
 
-        /// <summary>
-        /// Publishes an attendance check-in or check-out event.
-        /// </summary>
-        public static void PublishAttendanceRecorded(Attendance attendance)
-        {
-            SafeInvoke(AttendanceRecorded, attendance);
-        }
 
         /// <summary>
         /// Publishes a payment recorded event.

@@ -35,7 +35,7 @@ namespace GymMembershipSystem.Services
                     _dataStore.GetMemberActiveSubscription(m.Id) == null &&
                     _dataStore.GetMemberLatestSubscription(m.Id) != null);
 
-                int todayAttendance = _dataStore.Attendances.Count(a => a.CheckInTime.Date == today);
+                int totalClasses = _dataStore.Classes.Count(c => c.IsActive);
 
                 decimal monthlyRevenue = _dataStore.Payments
                     .Where(p => p.PaymentDate.Year == today.Year && p.PaymentDate.Month == today.Month)
@@ -50,7 +50,7 @@ namespace GymMembershipSystem.Services
                     TotalMembers = totalMembers,
                     ActiveMembers = activeMembers,
                     ExpiredMembers = expiredMembers,
-                    TodayAttendanceCount = todayAttendance,
+                    TotalClassesCount = totalClasses,
                     MonthlyRevenue = monthlyRevenue,
                     TotalOutstandingBalance = totalOutstanding
                 };
@@ -129,33 +129,6 @@ namespace GymMembershipSystem.Services
             }
         }
 
-        public IReadOnlyList<DailyAttendanceItem> GetDailyAttendanceSummary(int days = 30)
-        {
-            lock (_dataStore.SyncRoot)
-            {
-                int effectiveDays = Math.Clamp(days, 1, 365);
-                var today = DateTime.Today;
-                var list = new List<DailyAttendanceItem>(effectiveDays);
-
-                for (int i = 0; i < effectiveDays; i++)
-                {
-                    var date = today.AddDays(-i);
-                    var dayAttendances = _dataStore.Attendances
-                        .Where(a => a.CheckInTime.Date == date)
-                        .ToList();
-
-                    list.Add(new DailyAttendanceItem
-                    {
-                        Date = date,
-                        DayOfWeek = date.DayOfWeek.ToString(),
-                        TotalVisits = dayAttendances.Count,
-                        UniqueMembersCount = dayAttendances.Select(a => a.MemberId).Distinct().Count()
-                    });
-                }
-
-                return list;
-            }
-        }
 
         public IReadOnlyList<MemberStatusReportItem> GetMemberStatusReport(string? statusFilter = null)
         {

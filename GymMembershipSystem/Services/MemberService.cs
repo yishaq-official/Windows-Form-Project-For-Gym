@@ -151,10 +151,9 @@ namespace GymMembershipSystem.Services
                 // "A member with existing subscriptions or payments cannot be deleted; the member must be deactivated instead."
                 bool hasSubs = _dataStore.Subscriptions.Any(s => s.MemberId == id);
                 bool hasPayments = _dataStore.Payments.Any(p => p.MemberId == id);
-                bool hasAttendances = _dataStore.Attendances.Any(a => a.MemberId == id);
                 bool hasBookings = _dataStore.Bookings.Any(b => b.MemberId == id);
 
-                hasSubscriptionsOrPayments = hasSubs || hasPayments || hasAttendances || hasBookings;
+                hasSubscriptionsOrPayments = hasSubs || hasPayments || hasBookings;
 
                 if (hasSubscriptionsOrPayments)
                 {

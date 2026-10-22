@@ -26,7 +26,6 @@ namespace GymMembershipSystem.Forms.Dashboard
         private void SubscribeEvents()
         {
             AppEvents.MemberChanged += OnMemberChanged;
-            AppEvents.AttendanceRecorded += OnAttendanceRecorded;
             AppEvents.PaymentReceived += OnPaymentReceived;
             AppEvents.SubscriptionChanged += OnSubscriptionChanged;
             AppEvents.GymClassChanged += OnGymClassChanged;
@@ -37,7 +36,6 @@ namespace GymMembershipSystem.Forms.Dashboard
         private void UnsubscribeEvents()
         {
             AppEvents.MemberChanged -= OnMemberChanged;
-            AppEvents.AttendanceRecorded -= OnAttendanceRecorded;
             AppEvents.PaymentReceived -= OnPaymentReceived;
             AppEvents.SubscriptionChanged -= OnSubscriptionChanged;
             AppEvents.GymClassChanged -= OnGymClassChanged;
@@ -54,17 +52,6 @@ namespace GymMembershipSystem.Forms.Dashboard
             });
         }
 
-        private void OnAttendanceRecorded(GymMembershipSystem.Models.Attendance attendance)
-        {
-            RunOnUiThread(() =>
-            {
-                RefreshMetrics();
-                var member = _dataStore.FindMember(attendance.MemberId);
-                var memberName = member?.FullName ?? $"Member #{attendance.MemberId}";
-                var action = attendance.IsCurrentlyInside ? "checked in" : "checked out";
-                LogActivity($"[EVENT] Attendance: {memberName} {action} at {DateTime.Now:hh:mm:ss tt}.");
-            });
-        }
 
         private void OnPaymentReceived(Payment payment)
         {
@@ -135,7 +122,7 @@ namespace GymMembershipSystem.Forms.Dashboard
         {
             int totalMembers;
             int activeMembers;
-            int todayAttendance;
+            int scheduledClasses;
             decimal totalRevenue;
 
             lock (_dataStore.SyncRoot)
@@ -151,13 +138,13 @@ namespace GymMembershipSystem.Forms.Dashboard
                     .ToHashSet();
 
                 activeMembers = _dataStore.Members.Count(m => m.IsActive && activeMemberIds.Contains(m.Id));
-                todayAttendance = _dataStore.Attendances.Count(a => a.CheckInTime.Date == today);
+                scheduledClasses = _dataStore.Classes.Count(c => c.IsActive);
                 totalRevenue = _dataStore.Payments.Sum(p => p.Amount);
             }
 
             lblTotalMembersValue.Text = totalMembers.ToString();
             lblActiveMembersValue.Text = activeMembers.ToString();
-            lblTodayAttendanceValue.Text = todayAttendance.ToString();
+            lblActiveClassesValue.Text = scheduledClasses.ToString();
             lblTotalRevenueValue.Text = $"${totalRevenue:N2}";
         }
 

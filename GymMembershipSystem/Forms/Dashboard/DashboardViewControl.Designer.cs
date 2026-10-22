@@ -32,15 +32,15 @@ namespace GymMembershipSystem.Forms.Dashboard
             lblActiveMembersValue = new System.Windows.Forms.Label();
             lblActiveMembersTitle = new System.Windows.Forms.Label();
             pnlCard3 = new System.Windows.Forms.Panel();
-            lblTodayAttendanceValue = new System.Windows.Forms.Label();
-            lblTodayAttendanceTitle = new System.Windows.Forms.Label();
+            lblActiveClassesValue = new System.Windows.Forms.Label();
+            lblActiveClassesTitle = new System.Windows.Forms.Label();
             pnlCard4 = new System.Windows.Forms.Panel();
             lblTotalRevenueValue = new System.Windows.Forms.Label();
             lblTotalRevenueTitle = new System.Windows.Forms.Label();
             pnlQuickActions = new System.Windows.Forms.Panel();
             lblQuickActions = new System.Windows.Forms.Label();
             flpQuickActions = new System.Windows.Forms.FlowLayoutPanel();
-            btnQuickCheckIn = new System.Windows.Forms.Button();
+            btnQuickBookClass = new System.Windows.Forms.Button();
             btnQuickNewMember = new System.Windows.Forms.Button();
             btnQuickPayment = new System.Windows.Forms.Button();
             btnQuickRefresh = new System.Windows.Forms.Button();
@@ -185,8 +185,8 @@ namespace GymMembershipSystem.Forms.Dashboard
             // 
             pnlCard3.BackColor = System.Drawing.Color.FromArgb(254, 243, 199);
             pnlCard3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            pnlCard3.Controls.Add(lblTodayAttendanceValue);
-            pnlCard3.Controls.Add(lblTodayAttendanceTitle);
+            pnlCard3.Controls.Add(lblActiveClassesValue);
+            pnlCard3.Controls.Add(lblActiveClassesTitle);
             pnlCard3.Dock = System.Windows.Forms.DockStyle.Fill;
             pnlCard3.Location = new System.Drawing.Point(479, 3);
             pnlCard3.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
@@ -195,27 +195,27 @@ namespace GymMembershipSystem.Forms.Dashboard
             pnlCard3.Size = new System.Drawing.Size(227, 114);
             pnlCard3.TabIndex = 2;
             // 
-            // lblTodayAttendanceValue
+            // lblActiveClassesValue
             // 
-            lblTodayAttendanceValue.AutoSize = true;
-            lblTodayAttendanceValue.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lblTodayAttendanceValue.ForeColor = System.Drawing.Color.FromArgb(217, 119, 6);
-            lblTodayAttendanceValue.Location = new System.Drawing.Point(12, 42);
-            lblTodayAttendanceValue.Name = "lblTodayAttendanceValue";
-            lblTodayAttendanceValue.Size = new System.Drawing.Size(38, 45);
-            lblTodayAttendanceValue.TabIndex = 1;
-            lblTodayAttendanceValue.Text = "0";
+            lblActiveClassesValue.AutoSize = true;
+            lblActiveClassesValue.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblActiveClassesValue.ForeColor = System.Drawing.Color.FromArgb(217, 119, 6);
+            lblActiveClassesValue.Location = new System.Drawing.Point(12, 42);
+            lblActiveClassesValue.Name = "lblActiveClassesValue";
+            lblActiveClassesValue.Size = new System.Drawing.Size(38, 45);
+            lblActiveClassesValue.TabIndex = 1;
+            lblActiveClassesValue.Text = "0";
             // 
-            // lblTodayAttendanceTitle
+            // lblActiveClassesTitle
             // 
-            lblTodayAttendanceTitle.AutoSize = true;
-            lblTodayAttendanceTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lblTodayAttendanceTitle.ForeColor = System.Drawing.Color.FromArgb(146, 64, 14);
-            lblTodayAttendanceTitle.Location = new System.Drawing.Point(14, 14);
-            lblTodayAttendanceTitle.Name = "lblTodayAttendanceTitle";
-            lblTodayAttendanceTitle.Size = new System.Drawing.Size(148, 17);
-            lblTodayAttendanceTitle.TabIndex = 0;
-            lblTodayAttendanceTitle.Text = "TODAY'S ATTENDANCE";
+            lblActiveClassesTitle.AutoSize = true;
+            lblActiveClassesTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblActiveClassesTitle.ForeColor = System.Drawing.Color.FromArgb(146, 64, 14);
+            lblActiveClassesTitle.Location = new System.Drawing.Point(14, 14);
+            lblActiveClassesTitle.Name = "lblActiveClassesTitle";
+            lblActiveClassesTitle.Size = new System.Drawing.Size(148, 17);
+            lblActiveClassesTitle.TabIndex = 0;
+            lblActiveClassesTitle.Text = "SCHEDULED CLASSES";
             // 
             // pnlCard4
             // 
@@ -278,7 +278,7 @@ namespace GymMembershipSystem.Forms.Dashboard
             // 
             // flpQuickActions
             // 
-            flpQuickActions.Controls.Add(btnQuickCheckIn);
+            flpQuickActions.Controls.Add(btnQuickBookClass);
             flpQuickActions.Controls.Add(btnQuickNewMember);
             flpQuickActions.Controls.Add(btnQuickPayment);
             flpQuickActions.Controls.Add(btnQuickRefresh);
@@ -289,21 +289,21 @@ namespace GymMembershipSystem.Forms.Dashboard
             flpQuickActions.Size = new System.Drawing.Size(952, 55);
             flpQuickActions.TabIndex = 1;
             // 
-            // btnQuickCheckIn
+            // btnQuickBookClass
             // 
-            btnQuickCheckIn.BackColor = System.Drawing.Color.FromArgb(241, 245, 249);
-            btnQuickCheckIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnQuickCheckIn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
-            btnQuickCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnQuickCheckIn.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnQuickCheckIn.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
-            btnQuickCheckIn.Location = new System.Drawing.Point(0, 8);
-            btnQuickCheckIn.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            btnQuickCheckIn.Name = "btnQuickCheckIn";
-            btnQuickCheckIn.Size = new System.Drawing.Size(160, 36);
-            btnQuickCheckIn.TabIndex = 0;
-            btnQuickCheckIn.Text = "⚡ Quick Check-in";
-            btnQuickCheckIn.UseVisualStyleBackColor = false;
+            btnQuickBookClass.BackColor = System.Drawing.Color.FromArgb(241, 245, 249);
+            btnQuickBookClass.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnQuickBookClass.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
+            btnQuickBookClass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnQuickBookClass.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnQuickBookClass.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            btnQuickBookClass.Location = new System.Drawing.Point(0, 8);
+            btnQuickBookClass.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            btnQuickBookClass.Name = "btnQuickBookClass";
+            btnQuickBookClass.Size = new System.Drawing.Size(160, 36);
+            btnQuickBookClass.TabIndex = 0;
+            btnQuickBookClass.Text = "⚡ Book Class";
+            btnQuickBookClass.UseVisualStyleBackColor = false;
             // 
             // btnQuickNewMember
             // 
@@ -435,15 +435,15 @@ namespace GymMembershipSystem.Forms.Dashboard
         private System.Windows.Forms.Label lblActiveMembersValue;
         private System.Windows.Forms.Label lblActiveMembersTitle;
         private System.Windows.Forms.Panel pnlCard3;
-        private System.Windows.Forms.Label lblTodayAttendanceValue;
-        private System.Windows.Forms.Label lblTodayAttendanceTitle;
+        private System.Windows.Forms.Label lblActiveClassesValue;
+        private System.Windows.Forms.Label lblActiveClassesTitle;
         private System.Windows.Forms.Panel pnlCard4;
         private System.Windows.Forms.Label lblTotalRevenueValue;
         private System.Windows.Forms.Label lblTotalRevenueTitle;
         private System.Windows.Forms.Panel pnlQuickActions;
         private System.Windows.Forms.Label lblQuickActions;
         private System.Windows.Forms.FlowLayoutPanel flpQuickActions;
-        public System.Windows.Forms.Button btnQuickCheckIn;
+        public System.Windows.Forms.Button btnQuickBookClass;
         public System.Windows.Forms.Button btnQuickNewMember;
         public System.Windows.Forms.Button btnQuickPayment;
         private System.Windows.Forms.Button btnQuickRefresh;

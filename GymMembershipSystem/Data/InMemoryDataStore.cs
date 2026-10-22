@@ -27,7 +27,6 @@ namespace GymMembershipSystem.Data
         public List<Trainer> Trainers { get; } = new List<Trainer>();
         public List<GymClass> Classes { get; } = new List<GymClass>();
         public List<Booking> Bookings { get; } = new List<Booking>();
-        public List<Attendance> Attendances { get; } = new List<Attendance>();
         public List<Payment> Payments { get; } = new List<Payment>();
 
         // Auto-increment ID counters
@@ -38,7 +37,6 @@ namespace GymMembershipSystem.Data
         private int _lastTrainerId;
         private int _lastClassId;
         private int _lastBookingId;
-        private int _lastAttendanceId;
         private int _lastPaymentId;
 
         public InMemoryDataStore()
@@ -54,7 +52,6 @@ namespace GymMembershipSystem.Data
         public int NextTrainerId() => System.Threading.Interlocked.Increment(ref _lastTrainerId);
         public int NextClassId() => System.Threading.Interlocked.Increment(ref _lastClassId);
         public int NextBookingId() => System.Threading.Interlocked.Increment(ref _lastBookingId);
-        public int NextAttendanceId() => System.Threading.Interlocked.Increment(ref _lastAttendanceId);
         public int NextPaymentId() => System.Threading.Interlocked.Increment(ref _lastPaymentId);
 
         public void ResetIdCounters(
@@ -65,7 +62,6 @@ namespace GymMembershipSystem.Data
             int trainerId = 0,
             int classId = 0,
             int bookingId = 0,
-            int attendanceId = 0,
             int paymentId = 0)
         {
             lock (_lock)
@@ -77,7 +73,6 @@ namespace GymMembershipSystem.Data
                 _lastTrainerId = trainerId;
                 _lastClassId = classId;
                 _lastBookingId = bookingId;
-                _lastAttendanceId = attendanceId;
                 _lastPaymentId = paymentId;
             }
         }
@@ -230,42 +225,6 @@ namespace GymMembershipSystem.Data
             }
         }
 
-        /// <summary>
-        /// Checks if a member is currently checked into the gym.
-        /// </summary>
-        public bool IsMemberCurrentlyInside(int memberId)
-        {
-            lock (_lock)
-            {
-                return Attendances.Any(a => a.MemberId == memberId && a.CheckInTime.Date == DateTime.Today && !a.CheckOutTime.HasValue);
-            }
-        }
-
-        /// <summary>
-        /// Gets the open attendance record for a member today, if any.
-        /// </summary>
-        public Attendance? GetActiveAttendance(int memberId)
-        {
-            lock (_lock)
-            {
-                return Attendances
-                    .Where(a => a.MemberId == memberId && a.CheckInTime.Date == DateTime.Today && !a.CheckOutTime.HasValue)
-                    .OrderByDescending(a => a.CheckInTime)
-                    .FirstOrDefault();
-            }
-        }
-
-        /// <summary>
-        /// Gets all attendances recorded today.
-        /// </summary>
-        public List<Attendance> GetTodayAttendances()
-        {
-            lock (_lock)
-            {
-                var today = DateTime.Today;
-                return Attendances.Where(a => a.CheckInTime.Date == today).ToList();
-            }
-        }
 
         /// <summary>
         /// Computes the total charges for a member across all subscriptions.
@@ -329,7 +288,6 @@ namespace GymMembershipSystem.Data
                 Trainers.Clear();
                 Classes.Clear();
                 Bookings.Clear();
-                Attendances.Clear();
                 Payments.Clear();
                 ResetIdCounters();
             }

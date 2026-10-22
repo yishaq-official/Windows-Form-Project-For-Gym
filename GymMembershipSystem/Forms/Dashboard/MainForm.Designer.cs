@@ -29,7 +29,6 @@ namespace GymMembershipSystem.Forms.Dashboard
             btnNavUsers = new System.Windows.Forms.Button();
             btnNavReports = new System.Windows.Forms.Button();
             btnNavPayments = new System.Windows.Forms.Button();
-            btnNavAttendance = new System.Windows.Forms.Button();
             btnNavClasses = new System.Windows.Forms.Button();
             btnNavTrainers = new System.Windows.Forms.Button();
             btnNavPlans = new System.Windows.Forms.Button();
@@ -145,7 +144,6 @@ namespace GymMembershipSystem.Forms.Dashboard
             pnlNavMenu.Controls.Add(btnNavUsers);
             pnlNavMenu.Controls.Add(btnNavReports);
             pnlNavMenu.Controls.Add(btnNavPayments);
-            pnlNavMenu.Controls.Add(btnNavAttendance);
             pnlNavMenu.Controls.Add(btnNavClasses);
             pnlNavMenu.Controls.Add(btnNavTrainers);
             pnlNavMenu.Controls.Add(btnNavPlans);
@@ -211,24 +209,6 @@ namespace GymMembershipSystem.Forms.Dashboard
             btnNavPayments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnNavPayments.UseVisualStyleBackColor = true;
             btnNavPayments.Click += btnNavPayments_Click;
-            // 
-            // btnNavAttendance
-            // 
-            btnNavAttendance.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnNavAttendance.Dock = System.Windows.Forms.DockStyle.Top;
-            btnNavAttendance.FlatAppearance.BorderSize = 0;
-            btnNavAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnNavAttendance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnNavAttendance.ForeColor = System.Drawing.Color.FromArgb(148, 163, 184);
-            btnNavAttendance.Location = new System.Drawing.Point(10, 235);
-            btnNavAttendance.Name = "btnNavAttendance";
-            btnNavAttendance.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            btnNavAttendance.Size = new System.Drawing.Size(220, 45);
-            btnNavAttendance.TabIndex = 5;
-            btnNavAttendance.Text = "⏱️  Daily Attendance";
-            btnNavAttendance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnNavAttendance.UseVisualStyleBackColor = true;
-            btnNavAttendance.Click += btnNavAttendance_Click;
             // 
             // btnNavClasses
             // 
@@ -437,7 +417,6 @@ namespace GymMembershipSystem.Forms.Dashboard
         private System.Windows.Forms.Button btnNavPlans;
         private System.Windows.Forms.Button btnNavTrainers;
         private System.Windows.Forms.Button btnNavClasses;
-        private System.Windows.Forms.Button btnNavAttendance;
         private System.Windows.Forms.Button btnNavPayments;
         private System.Windows.Forms.Button btnNavReports;
         private System.Windows.Forms.Button btnNavUsers;

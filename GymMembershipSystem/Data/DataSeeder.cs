@@ -439,69 +439,7 @@ namespace GymMembershipSystem.Data
                     IsCancelled = false
                 });
 
-                // 8. Seed Attendance (Today and historical)
-                // Sarah Connor checked in and out today
-                store.Attendances.Add(new Attendance
-                {
-                    Id = store.NextAttendanceId(),
-                    MemberId = member1.Id,
-                    CheckInTime = DateTime.Today.AddHours(8).AddMinutes(15),
-                    CheckOutTime = DateTime.Today.AddHours(9).AddMinutes(45)
-                });
-
-                // Bruce Wayne currently checked in (inside)
-                store.Attendances.Add(new Attendance
-                {
-                    Id = store.NextAttendanceId(),
-                    MemberId = member2.Id,
-                    CheckInTime = DateTime.Today.AddHours(9).AddMinutes(30),
-                    CheckOutTime = null
-                });
-
-                // Diana Prince checked in and out today
-                store.Attendances.Add(new Attendance
-                {
-                    Id = store.NextAttendanceId(),
-                    MemberId = member3.Id,
-                    CheckInTime = DateTime.Today.AddHours(10).AddMinutes(0),
-                    CheckOutTime = DateTime.Today.AddHours(11).AddMinutes(20)
-                });
-
-                // Peter Parker currently checked in (inside)
-                store.Attendances.Add(new Attendance
-                {
-                    Id = store.NextAttendanceId(),
-                    MemberId = member4.Id,
-                    CheckInTime = DateTime.Today.AddHours(12).AddMinutes(5),
-                    CheckOutTime = null
-                });
-
-                // Historical attendances for reporting
-                store.Attendances.Add(new Attendance
-                {
-                    Id = store.NextAttendanceId(),
-                    MemberId = member1.Id,
-                    CheckInTime = DateTime.Today.AddDays(-1).AddHours(8).AddMinutes(0),
-                    CheckOutTime = DateTime.Today.AddDays(-1).AddHours(9).AddMinutes(30)
-                });
-
-                store.Attendances.Add(new Attendance
-                {
-                    Id = store.NextAttendanceId(),
-                    MemberId = member2.Id,
-                    CheckInTime = DateTime.Today.AddDays(-1).AddHours(18).AddMinutes(0),
-                    CheckOutTime = DateTime.Today.AddDays(-1).AddHours(19).AddMinutes(45)
-                });
-
-                store.Attendances.Add(new Attendance
-                {
-                    Id = store.NextAttendanceId(),
-                    MemberId = member3.Id,
-                    CheckInTime = DateTime.Today.AddDays(-2).AddHours(7).AddMinutes(30),
-                    CheckOutTime = DateTime.Today.AddDays(-2).AddHours(8).AddMinutes(45)
-                });
-
-                // 9. Seed Payments
+                // 8. Seed Payments
                 // Sarah Connor paid for Annual VIP ($280.00)
                 store.Payments.Add(new Payment
                 {

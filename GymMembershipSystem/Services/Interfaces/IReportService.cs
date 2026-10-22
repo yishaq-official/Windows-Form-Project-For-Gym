@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using GymMembershipSystem.Models;
 
@@ -6,7 +5,7 @@ namespace GymMembershipSystem.Services.Interfaces
 {
     /// <summary>
     /// Service contract for aggregating gym operational metrics, member statistics,
-    /// class fill rates, financial summaries, and attendance volume.
+    /// class fill rates, and financial summaries.
     /// </summary>
     public interface IReportService
     {
@@ -24,11 +23,6 @@ namespace GymMembershipSystem.Services.Interfaces
         /// Computes monthly revenue aggregations and transaction volume grouped by calendar month.
         /// </summary>
         IReadOnlyList<MonthlyIncomeItem> GetMonthlyIncomeSummary();
-
-        /// <summary>
-        /// Computes daily attendance counts and unique visitor volume over the specified trailing day window.
-        /// </summary>
-        IReadOnlyList<DailyAttendanceItem> GetDailyAttendanceSummary(int days = 30);
 
         /// <summary>
         /// Retrieves a comprehensive member list with current subscription status, plan name, and outstanding balance.

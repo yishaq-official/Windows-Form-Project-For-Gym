@@ -2,7 +2,6 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using GymMembershipSystem.Common;
-using GymMembershipSystem.Forms.Attendance;
 using GymMembershipSystem.Forms.Classes;
 using GymMembershipSystem.Forms.Members;
 using GymMembershipSystem.Forms.Payments;
@@ -21,7 +20,6 @@ namespace GymMembershipSystem.Forms.Dashboard
         private PlansViewControl? _plansView;
         private TrainersViewControl? _trainersView;
         private ClassesViewControl? _classesView;
-        private AttendanceViewControl? _attendanceView;
         private PaymentsViewControl? _paymentsView;
         private ReportsViewControl? _reportsView;
         private UsersViewControl? _usersView;
@@ -86,8 +84,8 @@ namespace GymMembershipSystem.Forms.Dashboard
             _dashboardView ??= new DashboardViewControl();
 
             // Wire dashboard quick actions to navigation
-            _dashboardView.btnQuickCheckIn.Click -= OnQuickCheckInClick;
-            _dashboardView.btnQuickCheckIn.Click += OnQuickCheckInClick;
+            _dashboardView.btnQuickBookClass.Click -= OnQuickBookClassClick;
+            _dashboardView.btnQuickBookClass.Click += OnQuickBookClassClick;
 
             _dashboardView.btnQuickNewMember.Click -= OnQuickNewMemberClick;
             _dashboardView.btnQuickNewMember.Click += OnQuickNewMemberClick;
@@ -99,7 +97,7 @@ namespace GymMembershipSystem.Forms.Dashboard
             lblStatusReady.Text = "Dashboard active";
         }
 
-        private void OnQuickCheckInClick(object? sender, EventArgs e) => btnNavAttendance.PerformClick();
+        private void OnQuickBookClassClick(object? sender, EventArgs e) => btnNavClasses.PerformClick();
         private void OnQuickNewMemberClick(object? sender, EventArgs e) => btnNavMembers.PerformClick();
         private void OnQuickPaymentClick(object? sender, EventArgs e) => btnNavPayments.PerformClick();
 
@@ -138,14 +136,6 @@ namespace GymMembershipSystem.Forms.Dashboard
             _classesView ??= new ClassesViewControl();
             _navigationService.NavigateTo(_classesView);
             lblStatusReady.Text = "Classes & Bookings active";
-        }
-
-        private void btnNavAttendance_Click(object sender, EventArgs e)
-        {
-            SetActiveButton(btnNavAttendance);
-            _attendanceView ??= new AttendanceViewControl();
-            _navigationService.NavigateTo(_attendanceView);
-            lblStatusReady.Text = "Daily Attendance Terminal active";
         }
 
         private void btnNavPayments_Click(object sender, EventArgs e)

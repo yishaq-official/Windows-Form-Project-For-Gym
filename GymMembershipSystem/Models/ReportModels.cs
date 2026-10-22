@@ -10,7 +10,7 @@ namespace GymMembershipSystem.Models
         public int TotalMembers { get; set; }
         public int ActiveMembers { get; set; }
         public int ExpiredMembers { get; set; }
-        public int TodayAttendanceCount { get; set; }
+        public int TotalClassesCount { get; set; }
         public decimal MonthlyRevenue { get; set; }
         public decimal TotalOutstandingBalance { get; set; }
     }
@@ -46,19 +46,6 @@ namespace GymMembershipSystem.Models
         public int TransactionCount { get; set; }
 
         public string TotalIncomeDisplay => TotalIncome.ToString("C2");
-    }
-
-    /// <summary>
-    /// Daily check-in footfall analysis.
-    /// </summary>
-    public class DailyAttendanceItem
-    {
-        public DateTime Date { get; set; }
-        public string DayOfWeek { get; set; } = string.Empty;
-        public int TotalVisits { get; set; }
-        public int UniqueMembersCount { get; set; }
-
-        public string DateDisplay => Date.ToString("yyyy-MM-dd");
     }
 
     /// <summary>
