@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using GymMembershipSystem.Common;
+using GymMembershipSystem.Forms.Classes;
 using GymMembershipSystem.Forms.Members;
 using GymMembershipSystem.Forms.Plans;
 using GymMembershipSystem.Forms.Trainers;
@@ -15,6 +16,7 @@ namespace GymMembershipSystem.Forms.Dashboard
         private MembersViewControl? _membersView;
         private PlansViewControl? _plansView;
         private TrainersViewControl? _trainersView;
+        private ClassesViewControl? _classesView;
         private Button? _currentActiveButton;
 
         // Visual theme tokens
@@ -125,7 +127,9 @@ namespace GymMembershipSystem.Forms.Dashboard
         private void btnNavClasses_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnNavClasses);
-            ShowPlaceholderView("Classes & Bookings", "Schedule group fitness classes and manage member enrollments (Component 08).");
+            _classesView ??= new ClassesViewControl();
+            _navigationService.NavigateTo(_classesView);
+            lblStatusReady.Text = "Classes & Bookings active";
         }
 
         private void btnNavAttendance_Click(object sender, EventArgs e)
