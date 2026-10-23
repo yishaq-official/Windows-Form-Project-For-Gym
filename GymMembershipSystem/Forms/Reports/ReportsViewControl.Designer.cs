@@ -42,10 +42,10 @@ namespace GymMembershipSystem.Forms.Reports
             lblRevenueVal = new System.Windows.Forms.Label();
             lblRevenueTitle = new System.Windows.Forms.Label();
 
-            pnlMetricAttendance = new System.Windows.Forms.Panel();
-            lblAttendanceSub = new System.Windows.Forms.Label();
-            lblAttendanceVal = new System.Windows.Forms.Label();
-            lblAttendanceTitle = new System.Windows.Forms.Label();
+            pnlMetricClasses = new System.Windows.Forms.Panel();
+            lblClassesSub = new System.Windows.Forms.Label();
+            lblClassesVal = new System.Windows.Forms.Label();
+            lblClassesTitle = new System.Windows.Forms.Label();
 
             pnlMetricOutstanding = new System.Windows.Forms.Panel();
             lblOutstandingSub = new System.Windows.Forms.Label();
@@ -70,13 +70,6 @@ namespace GymMembershipSystem.Forms.Reports
             colRevTransactions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             colRevTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
 
-            tabAttendance = new System.Windows.Forms.TabPage();
-            dgvAttendance = new System.Windows.Forms.DataGridView();
-            colAttDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            colAttDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            colAttVisits = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            colAttUnique = new System.Windows.Forms.DataGridViewTextBoxColumn();
-
             tabMemberStatus = new System.Windows.Forms.TabPage();
             pnlMemberFilter = new System.Windows.Forms.Panel();
             cboMemberFilter = new System.Windows.Forms.ComboBox();
@@ -95,17 +88,15 @@ namespace GymMembershipSystem.Forms.Reports
             pnlMetrics.SuspendLayout();
             pnlMetricMembers.SuspendLayout();
             pnlMetricRevenue.SuspendLayout();
-            pnlMetricAttendance.SuspendLayout();
+            pnlMetricClasses.SuspendLayout();
             pnlMetricOutstanding.SuspendLayout();
             tabReports.SuspendLayout();
             tabFillRates.SuspendLayout();
             tabMonthlyRevenue.SuspendLayout();
-            tabAttendance.SuspendLayout();
             tabMemberStatus.SuspendLayout();
             pnlMemberFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClassFillRates).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMonthlyRevenue).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAttendance).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMemberStatus).BeginInit();
             SuspendLayout();
 
@@ -195,7 +186,7 @@ namespace GymMembershipSystem.Forms.Reports
             lblSubtitle.Name = "lblSubtitle";
             lblSubtitle.Size = new System.Drawing.Size(560, 17);
             lblSubtitle.TabIndex = 1;
-            lblSubtitle.Text = "Operational metrics, capacity fill rates, monthly revenue, and footfall attendance analytics";
+            lblSubtitle.Text = "Operational metrics, capacity fill rates, monthly revenue, and membership analytics";
 
             // 
             // lblTitle
@@ -213,7 +204,7 @@ namespace GymMembershipSystem.Forms.Reports
             // pnlMetrics
             // 
             pnlMetrics.Controls.Add(pnlMetricOutstanding);
-            pnlMetrics.Controls.Add(pnlMetricAttendance);
+            pnlMetrics.Controls.Add(pnlMetricClasses);
             pnlMetrics.Controls.Add(pnlMetricRevenue);
             pnlMetrics.Controls.Add(pnlMetricMembers);
             pnlMetrics.Dock = System.Windows.Forms.DockStyle.Top;
@@ -324,54 +315,54 @@ namespace GymMembershipSystem.Forms.Reports
             lblRevenueSub.Text = "Current calendar month";
 
             // 
-            // pnlMetricAttendance
+            // pnlMetricClasses
             // 
-            pnlMetricAttendance.BackColor = System.Drawing.Color.FromArgb(255, 251, 235);
-            pnlMetricAttendance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            pnlMetricAttendance.Controls.Add(lblAttendanceSub);
-            pnlMetricAttendance.Controls.Add(lblAttendanceVal);
-            pnlMetricAttendance.Controls.Add(lblAttendanceTitle);
-            pnlMetricAttendance.Location = new System.Drawing.Point(504, 4);
-            pnlMetricAttendance.Name = "pnlMetricAttendance";
-            pnlMetricAttendance.Padding = new System.Windows.Forms.Padding(12, 6, 12, 6);
-            pnlMetricAttendance.Size = new System.Drawing.Size(240, 72);
-            pnlMetricAttendance.TabIndex = 2;
+            pnlMetricClasses.BackColor = System.Drawing.Color.FromArgb(255, 251, 235);
+            pnlMetricClasses.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pnlMetricClasses.Controls.Add(lblClassesSub);
+            pnlMetricClasses.Controls.Add(lblClassesVal);
+            pnlMetricClasses.Controls.Add(lblClassesTitle);
+            pnlMetricClasses.Location = new System.Drawing.Point(504, 4);
+            pnlMetricClasses.Name = "pnlMetricClasses";
+            pnlMetricClasses.Padding = new System.Windows.Forms.Padding(12, 6, 12, 6);
+            pnlMetricClasses.Size = new System.Drawing.Size(240, 72);
+            pnlMetricClasses.TabIndex = 2;
 
             // 
-            // lblAttendanceTitle
+            // lblClassesTitle
             // 
-            lblAttendanceTitle.AutoSize = true;
-            lblAttendanceTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lblAttendanceTitle.ForeColor = System.Drawing.Color.FromArgb(100, 116, 139);
-            lblAttendanceTitle.Location = new System.Drawing.Point(10, 6);
-            lblAttendanceTitle.Name = "lblAttendanceTitle";
-            lblAttendanceTitle.Size = new System.Drawing.Size(107, 13);
-            lblAttendanceTitle.TabIndex = 0;
-            lblAttendanceTitle.Text = "TODAY'S CHECK-INS";
+            lblClassesTitle.AutoSize = true;
+            lblClassesTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblClassesTitle.ForeColor = System.Drawing.Color.FromArgb(100, 116, 139);
+            lblClassesTitle.Location = new System.Drawing.Point(10, 6);
+            lblClassesTitle.Name = "lblClassesTitle";
+            lblClassesTitle.Size = new System.Drawing.Size(95, 13);
+            lblClassesTitle.TabIndex = 0;
+            lblClassesTitle.Text = "ACTIVE CLASSES";
 
             // 
-            // lblAttendanceVal
+            // lblClassesVal
             // 
-            lblAttendanceVal.AutoSize = true;
-            lblAttendanceVal.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            lblAttendanceVal.ForeColor = System.Drawing.Color.FromArgb(217, 119, 6);
-            lblAttendanceVal.Location = new System.Drawing.Point(10, 22);
-            lblAttendanceVal.Name = "lblAttendanceVal";
-            lblAttendanceVal.Size = new System.Drawing.Size(24, 28);
-            lblAttendanceVal.TabIndex = 1;
-            lblAttendanceVal.Text = "0";
+            lblClassesVal.AutoSize = true;
+            lblClassesVal.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblClassesVal.ForeColor = System.Drawing.Color.FromArgb(217, 119, 6);
+            lblClassesVal.Location = new System.Drawing.Point(10, 22);
+            lblClassesVal.Name = "lblClassesVal";
+            lblClassesVal.Size = new System.Drawing.Size(24, 28);
+            lblClassesVal.TabIndex = 1;
+            lblClassesVal.Text = "0";
 
             // 
-            // lblAttendanceSub
+            // lblClassesSub
             // 
-            lblAttendanceSub.AutoSize = true;
-            lblAttendanceSub.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lblAttendanceSub.ForeColor = System.Drawing.Color.FromArgb(71, 85, 105);
-            lblAttendanceSub.Location = new System.Drawing.Point(10, 50);
-            lblAttendanceSub.Name = "lblAttendanceSub";
-            lblAttendanceSub.Size = new System.Drawing.Size(99, 13);
-            lblAttendanceSub.TabIndex = 2;
-            lblAttendanceSub.Text = "Total visits logged";
+            lblClassesSub.AutoSize = true;
+            lblClassesSub.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblClassesSub.ForeColor = System.Drawing.Color.FromArgb(71, 85, 105);
+            lblClassesSub.Location = new System.Drawing.Point(10, 50);
+            lblClassesSub.Name = "lblClassesSub";
+            lblClassesSub.Size = new System.Drawing.Size(120, 13);
+            lblClassesSub.TabIndex = 2;
+            lblClassesSub.Text = "Total scheduled classes";
 
             // 
             // pnlMetricOutstanding
@@ -428,7 +419,6 @@ namespace GymMembershipSystem.Forms.Reports
             // 
             tabReports.Controls.Add(tabFillRates);
             tabReports.Controls.Add(tabMonthlyRevenue);
-            tabReports.Controls.Add(tabAttendance);
             tabReports.Controls.Add(tabMemberStatus);
             tabReports.Dock = System.Windows.Forms.DockStyle.Fill;
             tabReports.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -643,91 +633,6 @@ namespace GymMembershipSystem.Forms.Reports
             colRevTotal.ReadOnly = true;
 
             // 
-            // tabAttendance
-            // 
-            tabAttendance.BackColor = System.Drawing.Color.White;
-            tabAttendance.Controls.Add(dgvAttendance);
-            tabAttendance.Location = new System.Drawing.Point(4, 38);
-            tabAttendance.Name = "tabAttendance";
-            tabAttendance.Padding = new System.Windows.Forms.Padding(12);
-            tabAttendance.Size = new System.Drawing.Size(1024, 487);
-            tabAttendance.TabIndex = 2;
-            tabAttendance.Text = "🕒 Daily Footfall (30 Days)";
-
-            // 
-            // dgvAttendance
-            // 
-            dgvAttendance.AllowUserToAddRows = false;
-            dgvAttendance.AllowUserToDeleteRows = false;
-            dgvAttendance.AllowUserToResizeRows = false;
-            dgvAttendance.BackgroundColor = System.Drawing.Color.White;
-            dgvAttendance.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dgvAttendance.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvAttendance.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dgvAttendance.ColumnHeadersDefaultCellStyle = dgvHeaderStyle;
-            dgvAttendance.ColumnHeadersHeight = 38;
-            dgvAttendance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvAttendance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-                colAttDate,
-                colAttDay,
-                colAttVisits,
-                colAttUnique
-            });
-            dgvAttendance.DefaultCellStyle = dgvDefaultStyle;
-            dgvAttendance.Dock = System.Windows.Forms.DockStyle.Fill;
-            dgvAttendance.EnableHeadersVisualStyles = false;
-            dgvAttendance.GridColor = System.Drawing.Color.FromArgb(241, 245, 249);
-            dgvAttendance.Location = new System.Drawing.Point(12, 12);
-            dgvAttendance.MultiSelect = false;
-            dgvAttendance.Name = "dgvAttendance";
-            dgvAttendance.ReadOnly = true;
-            dgvAttendance.RowHeadersVisible = false;
-            dgvAttendance.RowTemplate.Height = 36;
-            dgvAttendance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dgvAttendance.Size = new System.Drawing.Size(1000, 463);
-            dgvAttendance.TabIndex = 0;
-
-            // 
-            // colAttDate
-            // 
-            colAttDate.DataPropertyName = "DateDisplay";
-            colAttDate.HeaderText = "Date";
-            colAttDate.MinimumWidth = 120;
-            colAttDate.Name = "colAttDate";
-            colAttDate.ReadOnly = true;
-            colAttDate.Width = 150;
-
-            // 
-            // colAttDay
-            // 
-            colAttDay.DataPropertyName = "DayOfWeek";
-            colAttDay.HeaderText = "Day of Week";
-            colAttDay.MinimumWidth = 120;
-            colAttDay.Name = "colAttDay";
-            colAttDay.ReadOnly = true;
-            colAttDay.Width = 160;
-
-            // 
-            // colAttVisits
-            // 
-            colAttVisits.DataPropertyName = "TotalVisits";
-            colAttVisits.HeaderText = "Total Check-in Visits";
-            colAttVisits.MinimumWidth = 140;
-            colAttVisits.Name = "colAttVisits";
-            colAttVisits.ReadOnly = true;
-            colAttVisits.Width = 180;
-
-            // 
-            // colAttUnique
-            // 
-            colAttUnique.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            colAttUnique.DataPropertyName = "UniqueMembersCount";
-            colAttUnique.HeaderText = "Unique Members";
-            colAttUnique.MinimumWidth = 140;
-            colAttUnique.Name = "colAttUnique";
-            colAttUnique.ReadOnly = true;
-
-            // 
             // tabMemberStatus
             // 
             tabMemberStatus.BackColor = System.Drawing.Color.White;
@@ -737,7 +642,7 @@ namespace GymMembershipSystem.Forms.Reports
             tabMemberStatus.Name = "tabMemberStatus";
             tabMemberStatus.Padding = new System.Windows.Forms.Padding(12);
             tabMemberStatus.Size = new System.Drawing.Size(1024, 487);
-            tabMemberStatus.TabIndex = 3;
+            tabMemberStatus.TabIndex = 2;
             tabMemberStatus.Text = "👥 Membership Status";
 
             // 
@@ -907,20 +812,18 @@ namespace GymMembershipSystem.Forms.Reports
             pnlMetricMembers.PerformLayout();
             pnlMetricRevenue.ResumeLayout(false);
             pnlMetricRevenue.PerformLayout();
-            pnlMetricAttendance.ResumeLayout(false);
-            pnlMetricAttendance.PerformLayout();
+            pnlMetricClasses.ResumeLayout(false);
+            pnlMetricClasses.PerformLayout();
             pnlMetricOutstanding.ResumeLayout(false);
             pnlMetricOutstanding.PerformLayout();
             tabReports.ResumeLayout(false);
             tabFillRates.ResumeLayout(false);
             tabMonthlyRevenue.ResumeLayout(false);
-            tabAttendance.ResumeLayout(false);
             tabMemberStatus.ResumeLayout(false);
             pnlMemberFilter.ResumeLayout(false);
             pnlMemberFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClassFillRates).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvMonthlyRevenue).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvAttendance).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvMemberStatus).EndInit();
             ResumeLayout(false);
         }
@@ -945,10 +848,10 @@ namespace GymMembershipSystem.Forms.Reports
         private System.Windows.Forms.Label lblRevenueVal;
         private System.Windows.Forms.Label lblRevenueSub;
 
-        private System.Windows.Forms.Panel pnlMetricAttendance;
-        private System.Windows.Forms.Label lblAttendanceTitle;
-        private System.Windows.Forms.Label lblAttendanceVal;
-        private System.Windows.Forms.Label lblAttendanceSub;
+        private System.Windows.Forms.Panel pnlMetricClasses;
+        private System.Windows.Forms.Label lblClassesTitle;
+        private System.Windows.Forms.Label lblClassesVal;
+        private System.Windows.Forms.Label lblClassesSub;
 
         private System.Windows.Forms.Panel pnlMetricOutstanding;
         private System.Windows.Forms.Label lblOutstandingTitle;
@@ -972,13 +875,6 @@ namespace GymMembershipSystem.Forms.Reports
         private System.Windows.Forms.DataGridViewTextBoxColumn colRevMonth;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRevTransactions;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRevTotal;
-
-        private System.Windows.Forms.TabPage tabAttendance;
-        private System.Windows.Forms.DataGridView dgvAttendance;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAttDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAttDay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAttVisits;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAttUnique;
 
         private System.Windows.Forms.TabPage tabMemberStatus;
         private System.Windows.Forms.Panel pnlMemberFilter;

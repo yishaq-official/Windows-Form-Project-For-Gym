@@ -36,7 +36,6 @@ namespace GymMembershipSystem.Forms.Reports
             AppEvents.MemberChanged += OnMemberChanged;
             AppEvents.SubscriptionChanged += OnSubscriptionChanged;
             AppEvents.PaymentReceived += OnPaymentReceived;
-            AppEvents.AttendanceRecorded += OnAttendanceRecorded;
             AppEvents.BookingChanged += OnBookingChanged;
             AppEvents.GymClassChanged += OnGymClassChanged;
             AppEvents.DataReset += OnDataReset;
@@ -47,7 +46,6 @@ namespace GymMembershipSystem.Forms.Reports
             AppEvents.MemberChanged -= OnMemberChanged;
             AppEvents.SubscriptionChanged -= OnSubscriptionChanged;
             AppEvents.PaymentReceived -= OnPaymentReceived;
-            AppEvents.AttendanceRecorded -= OnAttendanceRecorded;
             AppEvents.BookingChanged -= OnBookingChanged;
             AppEvents.GymClassChanged -= OnGymClassChanged;
             AppEvents.DataReset -= OnDataReset;
@@ -56,7 +54,6 @@ namespace GymMembershipSystem.Forms.Reports
         private void OnMemberChanged(Member member, ChangeType changeType) => RunOnUiThread(RefreshAll);
         private void OnSubscriptionChanged(Subscription subscription, ChangeType changeType) => RunOnUiThread(RefreshAll);
         private void OnPaymentReceived(Payment payment) => RunOnUiThread(RefreshAll);
-        private void OnAttendanceRecorded(GymMembershipSystem.Models.Attendance attendance) => RunOnUiThread(RefreshAll);
         private void OnBookingChanged(Booking booking, ChangeType changeType) => RunOnUiThread(RefreshAll);
         private void OnGymClassChanged(GymClass gymClass, ChangeType changeType) => RunOnUiThread(RefreshAll);
         private void OnDataReset() => RunOnUiThread(RefreshAll);
@@ -83,7 +80,6 @@ namespace GymMembershipSystem.Forms.Reports
             RefreshDashboardMetrics();
             LoadClassFillRates();
             LoadMonthlyRevenue();
-            LoadAttendanceAnalytics();
             LoadMemberStatusReport();
         }
 
@@ -95,7 +91,7 @@ namespace GymMembershipSystem.Forms.Reports
             lblMembersSub.Text = $"Active: {metrics.ActiveMembers} | Expired: {metrics.ExpiredMembers}";
 
             lblRevenueVal.Text = metrics.MonthlyRevenue.ToString("C2");
-            lblAttendanceVal.Text = metrics.TodayAttendanceCount.ToString("N0");
+            lblClassesVal.Text = metrics.TotalClassesCount.ToString("N0");
             lblOutstandingVal.Text = metrics.TotalOutstandingBalance.ToString("C2");
         }
 
@@ -111,13 +107,6 @@ namespace GymMembershipSystem.Forms.Reports
             var monthly = _reportService.GetMonthlyIncomeSummary().ToList();
             dgvMonthlyRevenue.AutoGenerateColumns = false;
             dgvMonthlyRevenue.DataSource = monthly;
-        }
-
-        private void LoadAttendanceAnalytics()
-        {
-            var attendance = _reportService.GetDailyAttendanceSummary(30).ToList();
-            dgvAttendance.AutoGenerateColumns = false;
-            dgvAttendance.DataSource = attendance;
         }
 
         private void LoadMemberStatusReport()
@@ -158,10 +147,6 @@ namespace GymMembershipSystem.Forms.Reports
                     reportName = "MonthlyRevenue";
                     break;
                 case 2:
-                    currentGrid = dgvAttendance;
-                    reportName = "DailyAttendance";
-                    break;
-                case 3:
                     currentGrid = dgvMemberStatus;
                     reportName = "MembershipStatus";
                     break;
